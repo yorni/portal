@@ -60,12 +60,6 @@ GEM
     coffee-script-source (1.8.0)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
-    devise (4.2.0)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 5.1)
-      responders
-      warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.7.0)
     globalid (0.3.7)
@@ -106,7 +100,6 @@ GEM
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
     nori (2.6.0)
-    orm_adapter (0.5.0)
     pkg-config (1.1.7)
     rack (1.6.4)
     rack-test (0.6.3)
@@ -138,8 +131,6 @@ GEM
     rake (11.2.2)
     rdoc (4.2.2)
       json (~> 1.4)
-    responders (2.3.0)
-      railties (>= 4.2.0, < 5.1)
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -180,8 +171,6 @@ GEM
       tzinfo (>= 1.0.0)
     uglifier (3.0.2)
       execjs (>= 0.3.0, < 3)
-    warden (1.2.6)
-      rack (>= 1.0)
     wasabi (3.5.0)
       httpi (~> 2.0)
       nokogiri (>= 1.4.2)
@@ -196,11 +185,11 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  bcrypt
   bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
   coffee-script-source (= 1.8.0)
-  devise
   jbuilder (~> 2.0)
   jquery-monthpicker-rails (~> 1.0.0)
   jquery-rails

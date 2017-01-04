@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<% if user_signed_in? %>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
 
@@ -18,7 +18,14 @@
 
     <% loController = params[:controller] %>
 
-    <div class="navbar-text"><span class="glyphicon glyphicon-user"></span> <%= current_user.email %></div>
+   <% if current_user %>
+    <div class="navbar-text"><span class="glyphicon glyphicon-user"></span> <%= current_user.username %></div>
+   <% if is_admin %>
+    Користувач-адміністратор
+            <% end %> 
+    
+  <% end %> 
+      
     <div class="navbar-text"><div class="v-divider">&nbsp;</div></div>
     <div class="navbar-form navbar-left">
     <ul class="nav nav-pills">
@@ -31,15 +38,30 @@
     </ul>
     </div>
 
-    <div class="navbar-form navbar-right">
-      <%= link_to destroy_user_session_path, :method => :delete, class: 'btn btn-primary' do %>
+   
+     <% if current_user %>
+       <div class="navbar-form navbar-right">
+      
           <span class="glyphicon glyphicon-log-out"></span> Вийти з порталу
-      <% end %>
+    <%= link_to "Вийти з порталу", logout_path %>
     </div>
+    
+    <% else %> 
+    <div class="navbar-form navbar-right">
+      
+          <span class="glyphicon glyphicon-log-out"></span> Вхід до порталу
+    <%= link_to "Вхід до порталу", login_path %>
+    </div>
+    
+    
+    <% end %> 
+    
+    
+    
   </div>
 </nav>
 
-<% end %>
+
 
 
 <%= yield %>

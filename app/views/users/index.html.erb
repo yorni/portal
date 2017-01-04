@@ -18,20 +18,24 @@
     <table class="table table-responsive table-striped">
       <thead class="thead-inverse">
       <tr>
-        <th class="text-center vertical-align">Email</th>
+        <th class="text-center vertical-align">Логін</th>
         <th class="text-center vertical-align">Дата створення</th>
         <th class="text-center vertical-align">Дата оновлення</th>
+        <th class="text-center vertical-align">Адміністратор</th>
+        <th class="text-center vertical-align">Постачальник</th>
 
         <th colspan="3"></th>
       </tr>
       <tbody>
       <% @users.each do |user| %>
           <tr>
-            <td class = "vertical-align"> <%= user.email %></td>
+            <td class = "vertical-align"> <%= user.username %></td>
 
 
             <td class = "vertical-align text-center"> <%= user.created_at %></td>
             <td class = "vertical-align text-center"> <%= user.updated_at %></td>
+             <td class = "vertical-align text-center"> <%= user.is_admin %></td>
+              <td class = "vertical-align text-center"> <%= user.is_supplier %></td>
             <td>
               <div>
                 <%= link_to user, :class => 'btn btn-default btn-block' do %>

@@ -54,6 +54,21 @@ class ApplicationController < ActionController::Base
     return base.nil? ? { id: 0, error: "Не знайдений номер договору [#{number}]".encode!("utf-8") } : { id: base.id }
   end
 
-
+    def current_user
+        @current_user ||= User.find_by_id(session["user_id"])
+    end
+    
+    def is_admin
+        current_user.is_admin
+    end
+    
+    def is_supplier
+        current_user.is_supplier
+    end
+    
+    
+helper_method :current_user, :is_admin, :is_supplier
+    
+    
 
 end

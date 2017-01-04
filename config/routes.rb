@@ -1,17 +1,13 @@
 Rails.application.routes.draw do
   resources :so_products
   resources :contracts
+  resources :users
+  resources :sessions, only: [:create]
 
-  devise_for :users
-
-  devise_scope :user do
-    authenticated :user do
-      root :to => 'orders#index'
-    end
-    unauthenticated :user do
-      root :to => 'devise/sessions#new', as: :unauthenticated_root
-    end
-  end
+  get 'login' => 'sessions#new'
+  get 'logout' => 'sessions#destroy'
+    
+  root :to => 'orders#index'
 
   get 'home', to: 'home#index'
 
@@ -44,6 +40,5 @@ Rails.application.routes.draw do
   resources :branches
   resources :suppliers
   resources :roles
-  resources :users
 
 end
