@@ -1,0 +1,5 @@
+// Отображение списка выбора с заявками
+var $elem = $('#main-receipts-products #supplier_order_id');
+$elem.empty().append('<%= j render("ajax_get_supplier_orders_for_select") %>');
+
+if ($elem.children().length > 1 ) { $elem.prop('disabled', false); } else { $elem.prop('disabled', true); };

@@ -1,0 +1,7 @@
+// Отображение списка выбора с договорами
+var $elem = $('#main-receipts #contract_number');
+$elem.empty().append('<%= j render("ajax_get_contracts_for_select") %>');
+
+if ($elem.children().length > 1 ) { $elem.prop('disabled', false); } else { $elem.prop('disabled', true); };
+$('#main-receipts-products .create-receipt .contracts').empty().append('<%= j render("ajax_get_contracts_for_select") %>');
+

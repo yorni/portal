@@ -1,0 +1,12 @@
+<% lcTableName='Районні відділи освіти' %>
+<% loController=@branches %>
+<% lcLink_path_edit='edit_branch_path' %>
+<% lcLink_path_new=new_branch_path %>
+
+<% laRow =
+       [
+           ['Назва', -1,'name']
+       ]
+%>
+
+<%= render 'forms/index', pcNotice: notice, pcTableName: lcTableName, pcLink_path_edit: lcLink_path_edit, pcLink_path_new: lcLink_path_new, poController: loController, paRow: laRow %>

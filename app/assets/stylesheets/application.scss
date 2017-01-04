@@ -1,0 +1,312 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require jquery-ui
+ *= require_tree .
+ *= require_self
+ */
+
+/*@import "bootstrap-sprockets";
+@import "bootstrap";*/
+
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url("glyphicons-halflings-regular.eot");
+  src: url("glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"),
+    url("glyphicons-halflings-regular.woff") format("woff"),
+    url("glyphicons-halflings-regular.ttf") format("truetype"),
+    url("glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
+}
+
+.container-fluid-main {
+  padding: 15px 30px;
+}
+
+.v-divider {
+  width: 1px;
+  border-left: 1px solid gray;
+}
+
+.container-table {
+  display: table;
+  height: 100vh;
+  width: 100vw;
+}
+
+.vertical-center-row {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.table tbody > tr > td.vertical-align-middle {
+  vertical-align: middle;
+}
+
+.dp-month-year .ui-datepicker-calendar {
+  display: none;
+}
+
+/* Что бы после перехода не менялся текст на кнопочках */
+a {
+  &.btn-primary, &.btn-success, &.btn-info, &.btn-warning, &.btn-danger:visited { color: white; }
+  &.btn-default:visited { color: black; }
+}
+
+
+body { margin: 0; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif}
+
+a {
+  text-decoration: none;
+  &:hover { background-color: white }
+  &[disabled] { pointer-events: none; }
+}
+
+/* Главний блок */
+body > div { margin-left: 15px; width: 1080px; box-sizing: border-box; }
+
+/* Менюшка панелька */
+.menu-panel {
+  display: table;
+  box-sizing: border-box;
+  border: 1px solid #e7e7e7;
+  background-color: #f8f8f8;
+  color: #777;
+  border-radius: 2px;
+  width: 100%;
+  height: 44px;
+  padding: 2px;
+  text-align: center;
+
+
+  > form { display: table-row; height: 100%; }
+
+  select, input[type="text"] {
+    display: table-cell;
+    box-sizing: border-box;
+    height: 100% ;
+    text-align: center;
+    font-size: 14px;
+    color: black;
+    -webkit-text-fill-color: black;
+    border-radius: 5px;
+    border: 1px solid #e7e7e7;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    cursor: pointer;
+
+    &:hover { border: 1px solid #27c0e6; }
+    &:disabled { background-color: #DADADA; }
+  }
+
+  input[type="submit"] {
+    display: table-cell;
+    box-sizing: border-box;
+    height: 100% ;
+    background-color: #337ab7;
+    color: white;
+    -webkit-text-fill-color: white;
+    border-radius: 5px;
+    border: 1px solid #2e6da4;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    cursor: pointer;
+
+    &:hover { background-color: #286090; border: 1px solid #27c0e6; }
+
+    &:disabled { background-color: #DADADA; }
+  }
+
+
+  .btn-menu-exit, .btn-menu-send {}
+
+  a.btn-menu {
+      height: 100%;
+      display: table-cell;
+      text-decoration: none;
+      background-color: #337ab7;
+      color: white;
+      -webkit-text-fill-color: white;
+      border-radius: 5px;
+      border: 1px solid #2e6da4;
+      text-align: center;
+      font-size: 14px;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      cursor: pointer;
+      padding: 0 5px;
+
+      &[disabled] { color: #ac2925;  -webkit-text-fill-color: #ac2925; background-color: #DADADA; }
+      &:hover { background-color: #286090; border: 1px solid #27c0e6; }
+      &:before { font-family: 'Glyphicons Halflings'; margin-right: 3px; box-sizing: border-box; line-height: 1; position: relative; top: 1px; }
+    }
+
+
+
+  .lbl-menu, .lbl-menu-send {
+    display: inline-table;
+    height: 100%;
+
+    span {
+      display: table-cell;
+      vertical-align: middle;
+      background-color: transparent;
+      color: black;
+      font-size: 14px;
+
+      &::before { font-family: 'Glyphicons Halflings'; margin-right: 3px; box-sizing: border-box; line-height: 1; position: relative; top: 1px; }
+    }
+  }
+
+  .lbl-menu-send {
+    span:nth-child(1) {
+      color: #666666;
+      &::before { content: '\e175'; }
+      &::after { content: "Відправлено:" }
+    }
+
+    span:nth-child(2) { font-weight: bold; padding: 0 2px; }
+  }
+
+
+  .btn-menu-exit a {
+    background-color: #c9302c;
+    &::before { content: '\e163'; }
+    &::after { content: "Вихід"}
+  }
+
+  .btn-menu-send a {
+    background-color: #eea236;
+    &::before { content: '\e175'; }
+    &::after { content: "Відправити в бухгалтерію"}
+  }
+
+  .align-right { float: right; }
+  .align-left { float: left; }
+}
+
+/* Панель с отображением данных */
+.panel-data { margin-top: 5px; }
+
+.col-data { display: inline-block; vertical-align: top; padding: 5px; }
+
+.table-view {
+  border-spacing: 0; border-collapse: collapse; border: 1px solid black; background-color: white;
+  th, td { box-sizing: border-box; border: 1px dotted black; text-align: center; padding: 0; }
+
+  input[type="number"] {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 0;
+    width: 100%;
+    text-align: right;
+    border: 0;
+    background-color: #ffff99;
+    font-weight: bold;
+  }
+
+  .left-align { padding: 0 2px; text-align: left; }
+
+  .btn-edit, .btn-del {
+    width: 100px;
+    a { display: inline-block; width: 100%; color: white; font-weight: bold; cursor: pointer; }
+  }
+
+  .btn-edit a {
+    background-color: #f0ad4e; border-color: #eea236;
+    &:before { content: "Редагувати"; }
+    &:hover { background-color: #ec971f; border-color: #d58512; }
+  }
+
+  .btn-del a {
+    background-color: #d9534f; border-color: #d43f3a;
+    &:after { content: "Видалити"; }
+    &:hover { background-color: #c9302c; border-color: #ac2925; }
+  }
+
+  .btn-view {
+    width: 200px;
+
+    a {
+      display: inline-block; width: 100%; color: #333; font-weight: bold; cursor: pointer; background-color: #fff; border-color: #ccc;
+      &:before { content: "Переглянути"; }
+      &:hover { background-color: #e6e6e6; border-color: #adadad; }
+    }
+  }
+
+}
+
+/* Выделение в таблички строку */
+.row-hover {
+  tbody tr {
+    cursor: pointer;
+    &:hover  { background-color: #e7e7e7; color: black; border: 1px solid #27c0e6; }
+  }
+}
+
+/* Нажатие в таблички строку для JQUERY */
+.row-click { background-color: #98ceae; color: white; }
+
+/* Ячейка с пустой отправки */
+.date-sa-blank {
+  background-color: #14fad5; font-size: 12px; font-weight: bold;
+  &:before { content: "Необролено"; }
+}
+
+
+
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+
+
+
+
+/* Менюшка для продуктов */
+.menu-panel-products {
+  text-align: center;
+}
+
+.menu-panel-products .btn-exit {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+.menu-panel-products .btn-send {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: 100%;
+}
+
+.menu-panel-products .msg-send {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  font-size: 14px;
+  line-height: 33px;
+}
+
+.menu-panel-products .msg-send span{
+  border-radius: 3px;
+  padding: 3px;
+  font-size: 12px;
+  line-height: 33px;
+  color: white;
+  font-weight: bold;
+  background-color: darkslateblue;
+}

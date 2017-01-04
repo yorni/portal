@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  institutions_id: 
+  date_st: 2016-11-28
+  date_fn: 2016-11-28
+  date_sa: 2016-11-28
+
+two:
+  institutions_id: 
+  date_st: 2016-11-28
+  date_fn: 2016-11-28
+  date_sa: 2016-11-28

@@ -1,0 +1,7 @@
+uk:
+  hello: "Привет"
+  date: #Throws an exception otherwise.
+    order:
+      - :day
+      - :month
+      - :year

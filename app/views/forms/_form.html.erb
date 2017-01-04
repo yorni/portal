@@ -1,0 +1,68 @@
+<%= form_for(poController) do |loForm| %>
+    <% if poController.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+          <ul>
+            <% poController.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class='text-center'>
+          <h1>
+            <%= "#{(piTypeform==0 ? $gcHeaderNew :  $gcHeaderEdit)} #{pcTableName}" %>
+          </h1>
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <% paRow.each_index do |i| %>
+            <div class="form-group col-lg-4 col-md-6">
+              <%= loForm.label paRow[i][1], text=paRow[i][1] %><br>
+
+              <% if paRow[i][0]==0 %>
+                  <%= loForm.text_field paRow[i][2], {class: "form-control"} %>
+              <% elsif paRow[i][0]==2 %>
+                  <%= loForm.datetime_select paRow[i][2], {class: "form-control"} %>
+              <% else %>
+                  <%= loForm.collection_select paRow[i][2], paRow[i][3], paRow[i][4], paRow[i][5], {prompt: paRow[i][6]}, {class: "form-control"} %>
+              <% end %>
+
+            </div>
+        <% end %>
+      </div>
+
+      <br>
+      <div class="row">
+        <div class="container text-center">
+
+          <%= button_tag(type: 'submit', class: "btn btn-warning") do %>
+
+              <% if piTypeform==0 %>
+                  <span class='glyphicon glyphicon-plus' aria-hidden="true"></span> Создать
+              <% else %>
+                  <span class='glyphicon glyphicon-ok' aria-hidden="true"></span> Сохранить
+              <% end %>
+
+          <% end %>
+
+          <% if piTypeform==1 %>
+              <%= link_to poController, :class => 'btn btn-default' do %>
+                  <span class='glyphicon glyphicon-search' aria-hidden="true"></span> Показать
+              <% end %>
+          <% end %>
+
+          <%= link_to pcLink_path_back, :class => 'btn btn-default' do %>
+              <span class='glyphicon glyphicon-arrow-left' aria-hidden="true"></span> Назад
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+<% end %>

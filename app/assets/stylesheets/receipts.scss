@@ -1,0 +1,60 @@
+#main-receipts {
+  .menu-panel { margin-bottom: 5px; }
+
+  #col1 {
+    width: 551px; background-color: #27c0e6;
+
+
+
+    tr {
+      .date { width: 100px; }
+      .order { width: 100px; }
+      .supplier { width: 350px; }
+    }
+  }
+
+  #col2 {
+    background-color: #ffff99;
+
+
+  tr {
+    .contract { width: 100px; }
+    .invoice { width: 100px; }
+    .date-sa { width: 100px; }
+  }
+
+  .alert-not-find {
+    width: 500px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  }
+}
+
+#main-receipts-products {
+  .menu-panel {
+    .right{ float: right; }
+  }
+
+  tr {
+    .product_name { width: 350px; padding-left: 25px; }
+    .count-fact { width: 100px; }
+
+    .date { width: 100px; }
+    .date-group  {
+      background-color: #c0c0c0;
+      font-size: 18px;
+      font-weight: bold;
+      border: 1px solid black;
+
+      span {
+        font-size: 75%;
+        font-weight: normal;
+      }
+    }
+
+
+  }
+}

@@ -1,0 +1,58 @@
+<div id="main-receipts-products">
+
+  <div class="menu-panel">
+    <%= form_tag receipts_path, method: :post, class: "create-receipt" do %>
+      <%= collection_select :supplier, :id, Supplier.all, :id, :name, { prompt: "Виберіть постачальника" }, { 'data-ajax-path': ajax_get_supplier_orders_for_select_path } %>
+      <%= select_tag :supplier_order_id, nil, { prompt: "Виберіть заявку", disabled: "disabled", 'data-ajax-path': ajax_get_contracts_for_select_path } %>
+      <%= select_tag :contract_number, nil, { prompt: "Виберіть заявку", disabled: "disabled" } %>
+      <%= text_field_tag :invoice_number, '', placeholder: '№ накладної', class: '' %>
+      <%= submit_tag 'Створити', { disabled: "disabled" } %>
+    <% end %>
+  </div>
+
+
+
+  <div class="menu-panel">
+    <% if @receipt.date_sa.blank? then %>
+      <div class="btn-menu-send align-left"><%= link_to '', send_sa_receipts_path(receipt_id: @receipt.id), method: :patch %></div>
+    <% else %>
+      <div class="lbl-menu-send align-left"><span></span><span><%= @receipt.date_sa.strftime("%d.%m.%Y") %></span></div>
+    <% end %>
+
+    <%= text_field_tag '', @receipt.supplier_order.supplier.name, disabled: true %>
+    <%= text_field_tag '', @receipt.supplier_order.number, disabled: true %>
+    <%= text_field_tag '', @receipt.invoice_number, disabled: true %>
+
+    <div class="btn-menu-exit align-right"><%= link_to "", '' %></div>
+  </div>
+
+  <% ldDate = '' %>
+  <table class="table-view" data-toggle="table" >
+    <thead>
+    <tr>
+      <th>Продукти харчування</th>
+      <th>Кількість</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @receipt_products.each do |receipt_product| %>
+      <tr>
+
+        <% if ldDate != receipt_product.date  %>
+            <% ldDate=receipt_product.date %>
+          <tr><td class="left-align date-group" colspan="2"><strong><%= day_of_week(receipt_product.date) %> <span><%= receipt_product.date.strftime("%d.%m.%Y") %></span></strong></td><tr>
+        <% end %>
+
+        <td class="left-align product_name"><%= (defined?(receipt_product.product.name) ? receipt_product.product.name : '' ) %>
+        <td class="count-fact">
+          <%= form_tag products_update_receipts_path(receipt_product_id: receipt_product.id), method: :post, remote: true do %>
+            <%= number_field_tag :count_fact, number_with_precision(receipt_product.count_fact, :precision => 2), class: 'blur-submit', step: '0.01' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Institution:</strong>
+  <%= @so_product.institution %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @so_product.product %>
+</p>
+
+<p>
+  <strong>Contract:</strong>
+  <%= @so_product.contract %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @so_product.date %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @so_product.count %>
+</p>
+
+<%= link_to 'Edit', edit_so_product_path(@so_product) %> |
+<%= link_to 'Back', so_products_path %>

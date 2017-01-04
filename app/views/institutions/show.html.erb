@@ -1,0 +1,14 @@
+<% lcTableName='Заклад освіти' %>
+<% loController=@institution %>
+<% lcLink_path_edit=edit_institution_path(@institution) %>
+<% lcLink_path_back=institutions_path %>
+
+<% laRow =
+       [
+           ['Назва', 'name'],
+           ['Районний відділ освіти ID', 'branch_id'],
+           ['Районний відділ освіти', 'branch.name']
+       ]
+%>
+
+<%= render 'forms/show', pcNotice: notice, pcTableName: lcTableName, pcLink_path_edit: lcLink_path_edit, pcLink_path_back: lcLink_path_back, poController: loController, paRow: laRow %>

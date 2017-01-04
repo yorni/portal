@@ -1,0 +1,13 @@
+<% lcTableName='Постачальники' %>
+<% loController=@supplier %>
+<% lcLink_path_edit= edit_supplier_path(@supplier) %>
+<% lcLink_path_back=suppliers_path %>
+
+<% laRow =
+       [
+           ['Код', 'code'],
+           ['Назва', 'name']
+       ]
+%>
+
+<%= render 'forms/show', pcNotice: notice, pcTableName: lcTableName, pcLink_path_edit: lcLink_path_edit, pcLink_path_back: lcLink_path_back, poController: loController, paRow: laRow %>

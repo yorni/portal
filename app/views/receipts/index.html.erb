@@ -1,0 +1,50 @@
+<div id="main-receipts">
+
+  <div class='panel-data'>
+    <div class="col-data" id="col1">
+
+      <div class="menu-panel">
+        <%= form_tag '', method: :get do %>
+          <%= text_field_tag :ym_search, '', placeholder: 'Виберіть місяць і рік', class: '', readonly: true %>
+          <%= collection_select :supplier, :id, Supplier.all, :id, :name, {prompt: "Всі постачальники"}, {class: ''} %>
+        <% end %>
+      </div>
+
+
+
+
+      <table class="table-view row-hover" data-toggle="table" >
+        <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Замовлення</th>
+          <th>Постачальник</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @supplier_orders.each_with_index do |supplier_order, index| %>
+          <tr class="<%= 'row-click' if index.zero? %>" data-ajax-path="<%= ajax_get_receipts_for_table_path + '?supplier_order_id=' + supplier_order.id.to_s %>">
+            <td class='date'><%= supplier_order.date.strftime('%d.%m.%Y') unless supplier_order.date.blank? %></td>
+            <td class='order'><%= supplier_order.number %></td>
+            <td class='supplier'><%= supplier_order.supplier.name if defined?(supplier_order.supplier.name) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-data" id="col2">
+      <div class="menu-panel">
+        <%= form_tag '', method: :get do %>
+          <%= select_tag :contract_number, nil, { prompt: "Виберіть договір", disabled: "disabled" } %>
+          <%= submit_tag 'Нове надходження', { disabled: "disabled" } %>
+        <% end %>
+      </div>
+
+      <div id="area-ajax"><%= render("receipts/ajax_get_receipts_for_table") %></div>
+    </div>
+  </div>
+
+</div>
+

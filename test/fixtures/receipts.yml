@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  institution_id: 
+  supplier: 
+  date: 2016-12-06
+
+two:
+  institution_id: 
+  supplier: 
+  date: 2016-12-06

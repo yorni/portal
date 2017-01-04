@@ -1,0 +1,69 @@
+<div class="container-fluid container-fluid-main">
+  <div class="row">
+
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-brand"><strong>Надходження</strong> <%= $ghReceipt[:date].strftime("%d.%m.%Y") %> <%= $ghReceipt[:supplier_name] %> </div>
+
+        <div class="navbar-form navbar-right">
+          <%= link_to receipts_path, class: "btn btn-primary" do %>
+            <span class="glyphicon glyphicon-new-window"></span> Повернутись до списку надходжень
+          <% end %>
+        </div>
+
+        <% if $ghReceipt[:date_sa].blank? then %>
+
+            <%= form_tag send_receipt_receipt_products_path, method: :patch, class: "navbar-form navbar-right" do %>
+
+                <%= button_tag(type: 'submit', class: 'btn btn-warning', data: { confirm: 'Підтверджуєте відправлення?' }) do %>
+                    <span class="glyphicon glyphicon-floppy-save"></span> Відправити в бухгалтерію
+                <% end %>
+
+            <% end %>
+
+        <% else %>
+            <div class="navbar-form navbar-right">
+              <div class="navbar-form"> Відправлено: <span style="font-size: 14px;" class="label label-info"><%= $ghReceipt[:date_sa].strftime("%d.%m.%Y") %></span></div>
+            </div>
+        <% end %>
+
+      </div>
+    </nav>
+
+    <div class="col-md-7">
+    <table class="table table-bordered" id="orders" data-toggle="table" >
+      <thead>
+      <tr>
+        <th class="text-center vertical-align-middle">Продукти харчування</th>
+        <th class="text-center vertical-align-middle">Кількість</th>
+        <th class="text-center vertical-align-middle">Фактична кількість</th>
+        <th class="text-center vertical-align-middle">Різниця</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @receipt_products.each do |receipt_product| %>
+        <tr>
+          <td class="col-md-4 vertical-align-middle"><%= (defined?(receipt_product.product.name) ? receipt_product.product.name : receipt_product.product ) %>
+          <td class="col-plan col-md-1 text-center vertical-align-middle"><%= receipt_product.count_plan %>
+
+          <% if $ghReceipt[:date_sa].blank? then %>
+
+            <td class="col-md-1 text-center vertical-align-middle">
+              <%= form_for(receipt_product, remote: true) do |f| %>
+                <%= f.text_field :count_fact, class: 'form-control text-right rp_cell' %>
+              <% end %>
+            </td>
+          <% else %>
+            <td class="col-md-1 text-center vertical-align-middle"><%= receipt_product.count_fact %> </td>
+          <% end %>
+          <% count_diff = receipt_product.count_fact - receipt_product.count_plan %>
+          <td class="col-diff col-md-1 text-center vertical-align-middle <%= if count_diff > 0; 'col-diff-plus' elsif count_diff < 0; 'col-diff-minus' end  %> "><%= count_diff %>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Портал</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if user_signed_in? %>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Портал</a>
+    </div>
+
+    <% loController = params[:controller] %>
+
+    <div class="navbar-text"><span class="glyphicon glyphicon-user"></span> <%= current_user.email %></div>
+    <div class="navbar-text"><div class="v-divider">&nbsp;</div></div>
+    <div class="navbar-form navbar-left">
+    <ul class="nav nav-pills">
+      <li class="<%= 'active' if loController == 'orders' || loController == 'order_products' %>"> <%= link_to "Заявки", orders_path %></li>
+      <li class="<%= 'active' if loController == 'receipts' || loController == 'receipt_products' %>"> <%= link_to "Надходження", receipts_path %></li>
+      <li class="<%= 'active' if loController == 'branches' %>"> <%= link_to "Районні відділи освіти", branches_path  %></li>
+      <li class="<%= 'active' if loController == 'institutions' %>"> <%= link_to "Заклади освіти", institutions_path %></li>
+      <li class="<%= 'active' if loController == 'products' %>"> <%= link_to "Продукти", products_path  %></li>
+      <li class="<%= 'active' if loController == 'suppliers' %>"> <%= link_to "Постачальники", suppliers_path  %></li>
+    </ul>
+    </div>
+
+    <div class="navbar-form navbar-right">
+      <%= link_to destroy_user_session_path, :method => :delete, class: 'btn btn-primary' do %>
+          <span class="glyphicon glyphicon-log-out"></span> Вийти з порталу
+      <% end %>
+    </div>
+  </div>
+</nav>
+
+<% end %>
+
+
+<%= yield %>
+
+</body>
+</html>

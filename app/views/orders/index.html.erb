@@ -1,0 +1,108 @@
+<div class="container-fluid container-fluid-main">
+  <div class="row">
+
+<!--
+    <div class="menu-panel menu-panel-documents">
+
+      <div class='dp-month-year3'>
+        <span>dcdscdssdsd</span>
+
+      </div>
+
+
+
+      <div class='dp-month-year2'>
+<span>dcdscdssdsd</span>
+
+      </div>
+
+<div style="margin-top: 10px;">fgffdgfghgfhfh</div>
+-->
+
+
+
+
+
+
+    <% now = Date.today() if @orders.any? %>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-brand">Список заявок</div>
+
+        <%= form_tag orders_path, method: :get, class: "navbar-form navbar-left" do %>
+            <%= text_field_tag :ym_search, '', class: 'form-control text-center dp-month-year', data: {value: $ghOrders[:date_filter].strftime('%Y-%m-%d'), min: $ghOrders[:date_min].strftime('%Y-%m-%d'), max: $ghOrders[:date_max].strftime('%Y-%m-%d')}, placeholder: 'Виберіть місяць і рік', readonly: true %>
+            <%= hidden_field_tag :date_filter, $ghOrders[:date_filter].strftime('%Y-%m-%d'), class: 'dp-my-date' %>
+        <% end %>
+
+        <% min_date = $ghOrders[:date_max] + 1.day %>
+        <% max_date = min_date + 1.month %>
+
+        <%= form_tag get_schedule_orders_path, method: :patch, class: "navbar-form navbar-right" do %>
+          <%= text_field_tag :date_st, min_date.strftime('%d.%m.%Y'), class: 'form-control text-center dp-date-min', data: { min: min_date.strftime('%Y-%m-%d'), max: max_date.strftime('%Y-%m-%d')}, placeholder: 'Виберіть початкову дату', readonly: true %>
+          <%= text_field_tag :date_fn, min_date.strftime('%d.%m.%Y'), class: 'form-control text-center dp-date-max', data: { min: min_date.strftime('%Y-%m-%d'), max: max_date.strftime('%Y-%m-%d')}, placeholder: 'Виберіть кінцеву дату', readonly: true %>
+          <%= button_tag(type: 'submit', class: 'btn btn-warning', data: { confirm: 'Підтверджуєте створення заявки?' }) do %>
+            <span class="glyphicon glyphicon-plus"></span> Створити заявку
+          <% end %>
+        <% end %>
+
+      </div>
+    </nav>
+    <div class="col-lg-6 col-md-6">
+    <table class="table table-bordered" data-toggle="table" >
+      <thead>
+      <tr>
+        <th class="text-center vertical-align-middle">Початкова дата</th>
+        <th class="text-center vertical-align-middle">Кінцева дата</th>
+        <th class="text-center vertical-align-middle">Дата відправки</th>
+        <th colspan="2"></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @orders.each do |order| %>
+        <tr class= <%=(order.date_sa.blank? ? 'warning' : '' ) %> >
+
+          <td class="col-lg-1 col-md-1 text-center vertical-align-middle"><%= (order.date_st.blank? ? '' : order.date_st.strftime('%d.%m.%Y')) %></td>
+          <td class="col-lg-1 col-md-1 text-center vertical-align-middle"><%= (order.date_fn.blank? ? '' : order.date_fn.strftime('%d.%m.%Y')) %></td>
+
+          <% if order.date_sa.blank? then %>
+            <td class="col-lg-2 col-md-2 text-center vertical-align-middle"><%= 'Заявка необроблена' %></td>
+
+            <td class="col-lg-1 col-md-1">
+              <%= link_to order_products_path(order_id: order.id), :class => 'btn btn-warning btn-block' do %>
+                <span class='glyphicon glyphicon-pencil' aria-hidden="true"></span> Редагувати
+              <% end %>
+            </td>
+
+            <td class="col-lg-1 col-md-1">
+              <%= link_to order, :class => 'btn btn-danger btn-block', method: :delete, data: { confirm: 'Підтверджуєте видалення?' } do %>
+                <span class='glyphicon glyphicon-trash' aria-hidden="true"></span> Видалити
+              <% end %>
+            </td>
+          <% else %>
+            <td class="col-lg-2 col-md-2 text-center vertical-align-middle"><%= order.date_sa.strftime('%d.%m.%Y') %></td>
+
+            <td colspan="2" class="col-lg-2 col-md-2">
+              <%= link_to order_products_path(order_id: order.id), :class => 'btn btn-default btn-block' do %>
+                <span class='glyphicon glyphicon-th' aria-hidden="true"></span> Переглянути
+              <% end %>
+            </td>
+          <% end %>
+
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    </div>
+
+  </div>
+</div>
+
+<% unless $ghOrders[:error_text].nil? then %>
+  <div id="dialog-message" title="Увага">
+    <p>Не неможливо створити графік.</p>
+    <p><%= $ghOrders[:error_text] %></p>
+  </div>
+
+  <% $ghOrders.delete(:error_text) %>
+<% end %>

@@ -1,0 +1,60 @@
+<div id="main-order-products">
+
+    <div class="menu-panel menu-panel-products">
+      <span><strong>Заявка</strong> з <%= $ghOrder[:date_st].strftime("%d.%m.%Y") %> по <%= $ghOrder[:date_fn].strftime("%d.%m.%Y") %></span></span>
+
+      <% if $ghOrder[:date_sa].blank? then %>
+        <%= form_tag send_order_order_products_path, method: :patch do %>
+          <%= button_tag(type: 'submit', class: 'btn btn-warning btn-send', data: { confirm: 'Підтверджуєте відправлення?' }) do %>
+            <span class="glyphicon glyphicon-floppy-save"></span> Відправити в бухгалтерію
+          <% end %>
+        <% end %>
+      <% else %>
+        <div class="msg-send"> Відправлено: <span><%= $ghOrder[:date_sa].strftime("%d.%m.%Y") %></span></div>
+      <% end %>
+
+      <%= link_to orders_path, class: "btn btn-primary btn-exit" do %>
+        <span class="glyphicon glyphicon-new-window"></span> Повернутись до списку заявок
+      <% end %>
+
+    </div>
+
+
+    <% ldDate = '' %>
+    <table id="table-order-products" data-toggle="table" >
+      <thead>
+      <tr>
+        <th>Продукти харчування</th>
+        <th>Кількість</th>
+        <th>Додаткова інформація</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @order_products.each do |order_product| %>
+        <tr>
+
+          <% if ldDate != order_product.date  %>
+            <% ldDate=order_product.date %>
+            <tr><td class="date" colspan="3"><h4><strong><%= day_of_week(order_product.date) %> <small><%= order_product.date.strftime("%d.%m.%Y") %></small></strong></h4></td><tr>
+          <% end %>
+
+          <td class="product_name"><%= (defined?(order_product.product.name) ? order_product.product.name : '' ) %>
+          <td class="count_pr">
+            <% if $ghOrder[:date_sa].blank? then %>
+              <%= form_for(order_product, remote: true) do |f| %>
+                  <%= f.number_field :count_pr, value: number_with_precision(f.object.count_pr, :precision => 2), class: 'op_cell', step: '0.01' %>
+              <% end %>
+
+            <% else %>
+              <%= order_product.count_pr.zero? ? 0 : number_with_precision(order_product.count_pr, :precision => 2) %>
+            <% end %>
+          </td>
+
+          <td class="description"> <%= (defined?(order_product.product.name) ? order_product.description : '' ) %> </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+</div>

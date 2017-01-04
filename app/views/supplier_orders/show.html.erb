@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Branch:</strong>
+  <%= @supplier_order.branch %>
+</p>
+
+<p>
+  <strong>Suppliers:</strong>
+  <%= @supplier_order.suppliers %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @supplier_order.number %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @supplier_order.date %>
+</p>
+
+<p>
+  <strong>Date st:</strong>
+  <%= @supplier_order.date_st %>
+</p>
+
+<p>
+  <strong>Date fn:</strong>
+  <%= @supplier_order.date_fn %>
+</p>
+
+<%= link_to 'Edit', edit_supplier_order_path(@supplier_order) %> |
+<%= link_to 'Back', supplier_orders_path %>

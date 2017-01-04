@@ -1,0 +1,63 @@
+
+<div class="container-fluid container-fluid-main">
+  <div class="row">
+
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-brand">Створення та зміна користувача:</div>
+
+        <div class="navbar-form navbar-right">
+          <%= link_to new_user_path, :class => 'btn btn-warning' do %>
+              <span class="glyphicon glyphicon-plus"></span> Додати користувача
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
+
+    <table class="table table-responsive table-striped">
+      <thead class="thead-inverse">
+      <tr>
+        <th class="text-center vertical-align">Email</th>
+        <th class="text-center vertical-align">Дата створення</th>
+        <th class="text-center vertical-align">Дата оновлення</th>
+
+        <th colspan="3"></th>
+      </tr>
+      <tbody>
+      <% @users.each do |user| %>
+          <tr>
+            <td class = "vertical-align"> <%= user.email %></td>
+
+
+            <td class = "vertical-align text-center"> <%= user.created_at %></td>
+            <td class = "vertical-align text-center"> <%= user.updated_at %></td>
+            <td>
+              <div>
+                <%= link_to user, :class => 'btn btn-default btn-block' do %>
+                    <span class='glyphicon glyphicon-search' aria-hidden="true"></span>
+                <% end %>
+              </div>
+            </td>
+
+            <td>
+              <%= link_to '', :class => 'btn btn-warning btn-block' do %>
+                  <span class='glyphicon glyphicon-pencil' aria-hidden="true"></span>
+              <% end %>
+            </td>
+
+            <td>
+              <%= link_to user, :class => 'btn btn-danger btn-block', method: :delete, data: { confirm: 'Підтверджуєте видалення?' } do %>
+                  <span class='glyphicon glyphicon-trash' aria-hidden="true"></span>
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+  </div>
+
+
+
+</div>

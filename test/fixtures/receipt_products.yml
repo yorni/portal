@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  receipt_id: 
+  product: 
+  count_plan: 9.99
+  ,: MyString
+  count_fact: 9.99
+
+two:
+  receipt_id: 
+  product: 
+  count_plan: 9.99
+  ,: MyString
+  count_fact: 9.99

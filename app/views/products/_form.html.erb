@@ -1,0 +1,12 @@
+<% lcTableName='Продукт' %>
+<% lcLink_path_back=products_path %>
+<% loController=@product %>
+
+<% laRow =
+       [
+           [0, 'Код', 'code'],
+           [0, 'Назва', 'name']
+       ]
+%>
+
+<%= render 'forms/form', poController: loController, paRow: laRow, piTypeform: piTypeform, pcTableName: lcTableName, pcLink_path_back: lcLink_path_back %>
