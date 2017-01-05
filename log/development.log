@@ -20484,3 +20484,162 @@ Processing by SyncProductsController#create as JSON
   [1m[35mSQL (2.0ms)[0m  INSERT INTO "products" ("code", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["code", "1223"], ["name", "namedd_sdddduplier3"], ["created_at", "2017-01-05 08:57:20.454085"], ["updated_at", "2017-01-05 08:57:20.454085"]]
   [1m[36m (101.5ms)[0m  [1mcommit transaction[0m
 Completed 200 OK in 119ms (Views: 0.3ms | ActiveRecord: 105.5ms)
+
+
+Started POST "/api/cu_branch.json" for 127.0.0.1 at 2017-01-05 11:40:54 +0200
+Processing by SyncCatalogsController#branch_update as JSON
+  Parameters: {"sync_branch"=>{"code"=>"1223", "name"=>"namedd_sdddduplier3"}, "sync_catalog"=>{"sync_branch"=>{"code"=>"1223", "name"=>"namedd_sdddduplier3"}}}
+  [1m[35mSQL (0.0ms)[0m  UPDATE "branches" SET "name" = NULL WHERE "branches"."code" IS NULL
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (16.0ms)[0m  INSERT INTO "branches" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2017-01-05 09:40:55.109850"], ["updated_at", "2017-01-05 09:40:55.109850"]]
+  [1m[36m (187.7ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 228ms (Views: 0.6ms | ActiveRecord: 204.7ms)
+
+
+Started POST "/api/cu_branch.json" for 127.0.0.1 at 2017-01-05 11:40:58 +0200
+Processing by SyncCatalogsController#branch_update as JSON
+  Parameters: {"sync_branch"=>{"code"=>"1223", "name"=>"namedd_sddddupffflier3"}, "sync_catalog"=>{"sync_branch"=>{"code"=>"1223", "name"=>"namedd_sddddupffflier3"}}}
+  [1m[35mSQL (167.6ms)[0m  UPDATE "branches" SET "name" = NULL WHERE "branches"."code" IS NULL
+Completed 200 OK in 172ms (Views: 0.6ms | ActiveRecord: 167.6ms)
+
+
+Started POST "/api/cu_supplier.json" for 127.0.0.1 at 2017-01-05 11:48:23 +0200
+Processing by SyncCatalogsController#supplier_update as JSON
+  Parameters: {"sync_supplier"=>{"code"=>"123", "name"=>"name_suplier2"}, "sync_catalog"=>{"sync_supplier"=>{"code"=>"123", "name"=>"name_suplier2"}}}
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "suppliers" SET "name" = NULL WHERE "suppliers"."code" IS NULL[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "suppliers" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2017-01-05 09:48:23.993170"], ["updated_at", "2017-01-05 09:48:23.993170"]]
+  [1m[35m (165.1ms)[0m  commit transaction
+Completed 200 OK in 185ms (Views: 1.0ms | ActiveRecord: 165.1ms)
+
+
+Started POST "/api/cu_supplier.json" for 127.0.0.1 at 2017-01-05 11:48:26 +0200
+Processing by SyncCatalogsController#supplier_update as JSON
+  Parameters: {"sync_supplier"=>{"code"=>"123", "name"=>"name_suplddier2"}, "sync_catalog"=>{"sync_supplier"=>{"code"=>"123", "name"=>"name_suplddier2"}}}
+  [1m[36mSQL (264.2ms)[0m  [1mUPDATE "suppliers" SET "name" = NULL WHERE "suppliers"."code" IS NULL[0m
+Completed 200 OK in 288ms (Views: 0.7ms | ActiveRecord: 264.2ms)
+
+
+Started POST "/api/cu_branch.json" for 127.0.0.1 at 2017-01-05 11:48:43 +0200
+Processing by SyncCatalogsController#branch_update as JSON
+  Parameters: {"sync_branch"=>{"code"=>"1223", "name"=>"namedd_sdddduplier3"}, "sync_catalog"=>{"sync_branch"=>{"code"=>"1223", "name"=>"namedd_sdddduplier3"}}}
+  [1m[35mSQL (139.7ms)[0m  UPDATE "branches" SET "name" = NULL WHERE "branches"."code" IS NULL
+Completed 200 OK in 148ms (Views: 0.6ms | ActiveRecord: 140.2ms)
+
+
+Started POST "/api/cu_branch.json" for 127.0.0.1 at 2017-01-05 11:48:45 +0200
+Processing by SyncCatalogsController#branch_update as JSON
+  Parameters: {"sync_branch"=>{"code"=>"1223", "name"=>"namedd_fffsdddduplier3"}, "sync_catalog"=>{"sync_branch"=>{"code"=>"1223", "name"=>"namedd_fffsdddduplier3"}}}
+  [1m[36mSQL (147.8ms)[0m  [1mUPDATE "branches" SET "name" = NULL WHERE "branches"."code" IS NULL[0m
+Completed 200 OK in 156ms (Views: 1.6ms | ActiveRecord: 147.8ms)
+
+
+Started POST "/api/cu_institution.json" for 127.0.0.1 at 2017-01-05 11:49:02 +0200
+Processing by SyncCatalogsController#institution_update as JSON
+  Parameters: {"sync_institution"=>{"code"=>"1223", "name"=>"namedd_suplier3", "branch_code"=>"0003"}, "sync_catalog"=>{"sync_institution"=>{"code"=>"1223", "name"=>"namedd_suplier3", "branch_code"=>"0003"}}}
+  [1m[35mBranch Load (4.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."code" IS NULL LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "branches" SET "name" = NULL, "branch_id" = 3 WHERE "branches"."code" IS NULL[0m
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 4.0ms)
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: branch_id: UPDATE "branches" SET "name" = NULL, "branch_id" = 3 WHERE "branches"."code" IS NULL):
+  app/controllers/sync_catalogs_controller.rb:12:in `institution_update'
+
+
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (821.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (793.3ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1798.9ms)
+
+
+Started POST "/api/cu_institution.json" for 127.0.0.1 at 2017-01-05 11:49:49 +0200
+Processing by SyncCatalogsController#institution_update as JSON
+  Parameters: {"sync_institution"=>{"code"=>"1223", "name"=>"namedd_suplier3", "branch_code"=>"0003"}, "sync_catalog"=>{"sync_institution"=>{"code"=>"1223", "name"=>"namedd_suplier3", "branch_code"=>"0003"}}}
+  [1m[35mBranch Load (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."code" IS NULL LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "branches" SET "name" = NULL, "branch" = 3 WHERE "branches"."code" IS NULL[0m
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: branch: UPDATE "branches" SET "name" = NULL, "branch" = 3 WHERE "branches"."code" IS NULL):
+  app/controllers/sync_catalogs_controller.rb:12:in `institution_update'
+
+
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (717.2ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (4.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (661.1ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1534.6ms)
+  [1m[35mInstitution Load (4.0ms)[0m  SELECT "institutions".* FROM "institutions"
+
+
+Started POST "/api/cu_institution.json" for 127.0.0.1 at 2017-01-05 11:51:09 +0200
+Processing by SyncCatalogsController#institution_update as JSON
+  Parameters: {"sync_institution"=>{"code"=>"1223", "name"=>"namedd_suplier3", "branch_code"=>"0003"}, "sync_catalog"=>{"sync_institution"=>{"code"=>"1223", "name"=>"namedd_suplier3", "branch_code"=>"0003"}}}
+  [1m[35mBranch Load (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."code" IS NULL LIMIT 1
+  [1m[36mSQL (4.0ms)[0m  [1mUPDATE "branches" SET "name" = NULL, "branch_id" = 3 WHERE "branches"."code" IS NULL[0m
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 4.0ms)
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: branch_id: UPDATE "branches" SET "name" = NULL, "branch_id" = 3 WHERE "branches"."code" IS NULL):
+  app/controllers/sync_catalogs_controller.rb:12:in `institution_update'
+
+
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (744.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (657.3ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (4.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1508.7ms)
+
+
+Started POST "/api/cu_institution.json" for 127.0.0.1 at 2017-01-05 11:51:50 +0200
+Processing by SyncCatalogsController#institution_update as JSON
+  Parameters: {"sync_institution"=>{"code"=>"1223", "name"=>"namedd_suplier3", "branch_code"=>"0003"}, "sync_catalog"=>{"sync_institution"=>{"code"=>"1223", "name"=>"namedd_suplier3", "branch_code"=>"0003"}}}
+  [1m[35mBranch Load (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."code" IS NULL LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "institutions" SET "name" = NULL, "branch_id" = 3 WHERE "institutions"."code" IS NULL[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "institutions" ("branch_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["branch_id", 3], ["created_at", "2017-01-05 09:51:50.845307"], ["updated_at", "2017-01-05 09:51:50.845307"]]
+  [1m[35m (125.7ms)[0m  commit transaction
+Completed 200 OK in 154ms (Views: 0.8ms | ActiveRecord: 125.7ms)
+
+
+Started POST "/api/cu_product.json" for 127.0.0.1 at 2017-01-05 11:52:13 +0200
+Processing by SyncCatalogsController#product_update as JSON
+  Parameters: {"sync_product"=>{"code"=>"1223", "name"=>"namedd_sdddduplier3"}, "sync_catalog"=>{"sync_product"=>{"code"=>"1223", "name"=>"namedd_sdddduplier3"}}}
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "products" SET "name" = NULL WHERE "products"."code" IS NULL[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (12.2ms)[0m  [1mINSERT INTO "products" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2017-01-05 09:52:13.544692"], ["updated_at", "2017-01-05 09:52:13.544692"]]
+  [1m[35m (150.3ms)[0m  commit transaction
+Completed 200 OK in 181ms (Views: 0.7ms | ActiveRecord: 162.5ms)
+
+
+Started POST "/api/cu_product.json" for 127.0.0.1 at 2017-01-05 11:52:20 +0200
+Processing by SyncCatalogsController#product_update as JSON
+  Parameters: {"sync_product"=>{"code"=>"1223", "name"=>"nafffmedd_sdddduplier3"}, "sync_catalog"=>{"sync_product"=>{"code"=>"1223", "name"=>"nafffmedd_sdddduplier3"}}}
+  [1m[36mSQL (256.1ms)[0m  [1mUPDATE "products" SET "name" = NULL WHERE "products"."code" IS NULL[0m
+Completed 200 OK in 275ms (Views: 0.6ms | ActiveRecord: 256.1ms)
+
+
+Started POST "/api/cu_product.json" for 127.0.0.1 at 2017-01-05 11:52:22 +0200
+Processing by SyncCatalogsController#product_update as JSON
+  Parameters: {"sync_product"=>{"code"=>"1d223", "name"=>"nafffmedd_sdddduplier3"}, "sync_catalog"=>{"sync_product"=>{"code"=>"1d223", "name"=>"nafffmedd_sdddduplier3"}}}
+  [1m[35mSQL (188.0ms)[0m  UPDATE "products" SET "name" = NULL WHERE "products"."code" IS NULL
+Completed 200 OK in 192ms (Views: 0.5ms | ActiveRecord: 188.0ms)

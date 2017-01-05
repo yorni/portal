@@ -41,9 +41,10 @@ Rails.application.routes.draw do
   resources :suppliers
   resources :roles
     
-  resources :sync_branchs, path: '/api/cu_branch'
-  resources :sync_institutions, path: '/api/cu_institution'
-  resources :sync_products, path: '/api/cu_product'
-  resources :sync_suppliers, path: '/api/cu_supplier'
+
+  post '/api/cu_branch', to: 'sync_catalogs#branch_update'
+  post '/api/cu_institution', to: 'sync_catalogs#institution_update'
+  post '/api/cu_product', to: 'sync_catalogs#product_update'
+  post '/api/cu_supplier', to: 'sync_catalogs#supplier_update'
 
 end
