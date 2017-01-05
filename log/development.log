@@ -20219,3 +20219,268 @@ Processing by SuppliersController#index as HTML
   Rendered suppliers/index.html.erb within layouts/application (8.0ms)
   [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
 Completed 200 OK in 474ms (Views: 474.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/branches" for 127.0.0.1 at 2017-01-05 10:27:54 +0200
+Processing by BranchesController#index as HTML
+  [1m[36mBranch Load (1.0ms)[0m  [1mSELECT "branches".* FROM "branches"[0m
+  Rendered forms/_index.html.erb (7.0ms)
+  Rendered branches/index.html.erb within layouts/application (13.0ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 475ms (Views: 472.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/institutions" for 127.0.0.1 at 2017-01-05 10:29:08 +0200
+Processing by InstitutionsController#index as HTML
+  [1m[36mInstitution Load (0.5ms)[0m  [1mSELECT "institutions".* FROM "institutions"[0m
+  [1m[35mBranch Load (1.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBranch Load (1.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered forms/_index.html.erb (107.3ms)
+  Rendered institutions/index.html.erb within layouts/application (116.3ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 650ms (Views: 640.9ms | ActiveRecord: 3.5ms)
+  [1m[36mBranch Load (6.0ms)[0m  [1mSELECT "branches".* FROM "branches"[0m
+
+
+Started POST "/api/cu_institution.json" for 127.0.0.1 at 2017-01-05 10:30:00 +0200
+Processing by SyncInstitutionsController#create as JSON
+  Parameters: {"sync_institution"=>{"code"=>"123", "name"=>"name_suplier2", "branch_code"=>"0003"}}
+  [1m[36mInstitution Load (1.0ms)[0m  [1mSELECT  "institutions".* FROM "institutions" WHERE "institutions"."code" = ? LIMIT 1[0m  [["code", 123]]
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 1.0ms)
+
+NameError (undefined local variable or method `supplier' for #<SyncInstitutionsController:0x89f42a0>):
+  app/controllers/sync_institutions_controller.rb:7:in `create'
+
+
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (774.8ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (703.4ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1614.5ms)
+
+
+Started POST "/api/cu_institution.json" for 127.0.0.1 at 2017-01-05 10:30:26 +0200
+Processing by SyncInstitutionsController#create as JSON
+  Parameters: {"sync_institution"=>{"code"=>"123", "name"=>"name_suplier2", "branch_code"=>"0003"}}
+  [1m[35mInstitution Load (0.5ms)[0m  SELECT  "institutions".* FROM "institutions" WHERE "institutions"."code" = ? LIMIT 1  [["code", 123]]
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.0ms)
+
+NameError (undefined local variable or method `supplier_params' for #<SyncInstitutionsController:0x9d78e78>):
+  app/controllers/sync_institutions_controller.rb:10:in `create'
+
+
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (787.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (736.6ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1667.7ms)
+
+
+Started POST "/api/cu_institution.json" for 127.0.0.1 at 2017-01-05 10:30:52 +0200
+Processing by SyncInstitutionsController#create as JSON
+  Parameters: {"sync_institution"=>{"code"=>"123", "name"=>"name_suplier2", "branch_code"=>"0003"}}
+  [1m[36mInstitution Load (0.5ms)[0m  [1mSELECT  "institutions".* FROM "institutions" WHERE "institutions"."code" = ? LIMIT 1[0m  [["code", 123]]
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.0ms)
+
+ActiveRecord::UnknownAttributeError (unknown attribute 'branch_code' for Supplier.):
+  app/controllers/sync_institutions_controller.rb:10:in `create'
+
+
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (798.9ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (714.3ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1643.0ms)
+
+
+Started POST "/api/cu_institution.json" for 127.0.0.1 at 2017-01-05 10:31:31 +0200
+Processing by SyncInstitutionsController#create as JSON
+  Parameters: {"sync_institution"=>{"code"=>"123", "name"=>"name_suplier2", "branch_code"=>"0003"}}
+  [1m[35mInstitution Load (0.0ms)[0m  SELECT  "institutions".* FROM "institutions" WHERE "institutions"."code" = ? LIMIT 1  [["code", 123]]
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.0ms)
+
+ActiveRecord::UnknownAttributeError (unknown attribute 'branch_code' for Institution.):
+  app/controllers/sync_institutions_controller.rb:10:in `create'
+
+
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (760.1ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (706.1ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1621.2ms)
+
+
+Started POST "/api/cu_institution.json" for 127.0.0.1 at 2017-01-05 10:32:35 +0200
+Processing by SyncInstitutionsController#create as JSON
+  Parameters: {"sync_institution"=>{"code"=>"123", "name"=>"name_suplier2", "branch_code"=>"0003"}}
+  [1m[36mInstitution Load (0.0ms)[0m  [1mSELECT  "institutions".* FROM "institutions" WHERE "institutions"."code" = ? LIMIT 1[0m  [["code", 123]]
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `supplier_params' for #<SyncInstitutionsController:0x9b22e70>):
+  app/controllers/sync_institutions_controller.rb:11:in `create'
+
+
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (758.4ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (701.3ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1609.5ms)
+
+
+Started POST "/api/cu_institution.json" for 127.0.0.1 at 2017-01-05 10:33:13 +0200
+Processing by SyncInstitutionsController#create as JSON
+  Parameters: {"sync_institution"=>{"code"=>"123", "name"=>"name_suplier2", "branch_code"=>"0003"}}
+  [1m[35mInstitution Load (0.0ms)[0m  SELECT  "institutions".* FROM "institutions" WHERE "institutions"."code" = ? LIMIT 1  [["code", 123]]
+  [1m[36mBranch Load (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."code" = ? LIMIT 1[0m  [["code", "0003"]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "institutions" ("name", "code", "branch_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "name_suplier2"], ["code", 123], ["branch_id", 1], ["created_at", "2017-01-05 08:33:13.654969"], ["updated_at", "2017-01-05 08:33:13.654969"]]
+  [1m[35m (106.6ms)[0m  commit transaction
+Completed 200 OK in 133ms (Views: 0.3ms | ActiveRecord: 107.6ms)
+
+
+Started POST "/api/cu_institution.json" for 127.0.0.1 at 2017-01-05 10:33:20 +0200
+Processing by SyncInstitutionsController#create as JSON
+  Parameters: {"sync_institution"=>{"code"=>"123", "name"=>"name_suplier3", "branch_code"=>"0003"}}
+  [1m[36mInstitution Load (0.0ms)[0m  [1mSELECT  "institutions".* FROM "institutions" WHERE "institutions"."code" = ? LIMIT 1[0m  [["code", 123]]
+  [1m[35mBranch Load (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."code" = ? LIMIT 1  [["code", "0003"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (34.7ms)[0m  UPDATE "institutions" SET "name" = ?, "updated_at" = ? WHERE "institutions"."id" = ?  [["name", "name_suplier3"], ["updated_at", "2017-01-05 08:33:20.759241"], ["id", 15]]
+  [1m[36m (70.2ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 114ms (Views: 0.2ms | ActiveRecord: 104.8ms)
+
+
+Started POST "/api/cu_institution.json" for 127.0.0.1 at 2017-01-05 10:33:31 +0200
+Processing by SyncInstitutionsController#create as JSON
+  Parameters: {"sync_institution"=>{"code"=>"1223", "name"=>"namedd_suplier3", "branch_code"=>"0003"}}
+  [1m[35mInstitution Load (0.5ms)[0m  SELECT  "institutions".* FROM "institutions" WHERE "institutions"."code" = ? LIMIT 1  [["code", 1223]]
+  [1m[36mBranch Load (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."code" = ? LIMIT 1[0m  [["code", "0003"]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (37.4ms)[0m  [1mINSERT INTO "institutions" ("name", "code", "branch_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "namedd_suplier3"], ["code", 1223], ["branch_id", 1], ["created_at", "2017-01-05 08:33:31.195132"], ["updated_at", "2017-01-05 08:33:31.195132"]]
+  [1m[35m (91.7ms)[0m  commit transaction
+Completed 200 OK in 137ms (Views: 0.1ms | ActiveRecord: 129.7ms)
+
+
+Started GET "/institutions" for 127.0.0.1 at 2017-01-05 10:33:38 +0200
+Processing by InstitutionsController#index as HTML
+  [1m[36mInstitution Load (0.0ms)[0m  [1mSELECT "institutions".* FROM "institutions"[0m
+  [1m[35mBranch Load (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBranch Load (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered forms/_index.html.erb (38.1ms)
+  Rendered institutions/index.html.erb within layouts/application (44.1ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 563ms (Views: 562.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/cu_branch.json" for 127.0.0.1 at 2017-01-05 10:43:50 +0200
+Processing by SyncBranchsController#create as JSON
+  Parameters: {"sync_branch"=>{"code"=>"1223", "name"=>"namedd_suplier3"}}
+  [1m[36mBranch Load (1.0ms)[0m  [1mSELECT  "branches".* FROM "branches" WHERE "branches"."code" = ? LIMIT 1[0m  [["code", "1223"]]
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 2.0ms)
+
+NameError (undefined local variable or method `Иranch' for #<SyncBranchsController:0x80b1538>):
+  app/controllers/sync_branchs_controller.rb:10:in `create'
+
+
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (780.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (741.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1693.4ms)
+
+
+Started POST "/api/cu_branch.json" for 127.0.0.1 at 2017-01-05 10:44:13 +0200
+Processing by SyncBranchsController#create as JSON
+  Parameters: {"sync_branch"=>{"code"=>"1223", "name"=>"namedd_suplier3"}}
+  [1m[35mBranch Load (0.5ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."code" = ? LIMIT 1  [["code", "1223"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "branches" ("code", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["code", "1223"], ["name", "namedd_suplier3"], ["created_at", "2017-01-05 08:44:13.804327"], ["updated_at", "2017-01-05 08:44:13.804327"]]
+  [1m[36m (90.3ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 104ms (Views: 0.4ms | ActiveRecord: 92.3ms)
+
+
+Started POST "/api/cu_branch.json" for 127.0.0.1 at 2017-01-05 10:44:17 +0200
+Processing by SyncBranchsController#create as JSON
+  Parameters: {"sync_branch"=>{"code"=>"1223", "name"=>"namedd_sdddduplier3"}}
+  [1m[35mBranch Load (1.0ms)[0m  SELECT  "branches".* FROM "branches" WHERE "branches"."code" = ? LIMIT 1  [["code", "1223"]]
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (32.8ms)[0m  UPDATE "branches" SET "name" = ?, "updated_at" = ? WHERE "branches"."id" = ?  [["name", "namedd_sdddduplier3"], ["updated_at", "2017-01-05 08:44:17.317407"], ["id", 2]]
+  [1m[36m (141.3ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 181ms (Views: 0.2ms | ActiveRecord: 176.1ms)
+
+
+Started POST "/api/cu_product.json" for 127.0.0.1 at 2017-01-05 10:57:20 +0200
+Processing by SyncProductsController#create as JSON
+  Parameters: {"sync_product"=>{"code"=>"1223", "name"=>"namedd_sdddduplier3"}}
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."code" = ? LIMIT 1  [["code", "1223"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "products" ("code", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["code", "1223"], ["name", "namedd_sdddduplier3"], ["created_at", "2017-01-05 08:57:20.454085"], ["updated_at", "2017-01-05 08:57:20.454085"]]
+  [1m[36m (101.5ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 119ms (Views: 0.3ms | ActiveRecord: 105.5ms)

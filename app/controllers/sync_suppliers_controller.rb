@@ -16,7 +16,7 @@ class SyncSuppliersController < ApplicationController
         format.json { render :json => lcHashOk }
         format.xml { render :xml => lcHashOk }
       else
-        lcHashError = { return_status: false, errors: @supplier.errors }
+        lcHashError = { return_status: false, errors: supplier.errors }
         format.json { render :json => lcHashError }
         format.xml { render :xml => lcHashError }
       end
