@@ -40,5 +40,10 @@ Rails.application.routes.draw do
   resources :branches
   resources :suppliers
   resources :roles
+    
+  resources :sync_branchs, path: '/api/cu_branch'
+  resources :sync_institutions, path: '/api/cu_institution'
+  resources :sync_products, path: '/api/cu_product'
+  resources :sync_suppliers, path: '/api/cu_supplier'
 
 end
